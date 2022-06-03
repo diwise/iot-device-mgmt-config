@@ -37,6 +37,9 @@ spec:
           - name: conf-volume-devices-cfg
             mountPath: /opt/diwise/config
             readOnly: true
+        env:
+          - name: RABBITMQ_HOST
+            value: rabbitmq
       serviceAccountName: iot-device-mgmt
       volumes:
         - name: conf-volume-devices-cfg
