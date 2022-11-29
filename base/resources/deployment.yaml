@@ -42,6 +42,7 @@ spec:
             readOnly: true
           - name: conf-volume-data
             mountPath: /opt/diwise/config/data
+            subPath: 30.devices.csv
             readOnly: true
       serviceAccountName: iot-device-mgmt
       volumes:
