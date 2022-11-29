@@ -11,7 +11,10 @@ spec:
   template:
     spec:
       containers:
-      - image: ghcr.io/diwise/iot-device-mgmt:changeme
+      - env:
+          - name: RABBITMQ_HOST
+            value: rabbitmq
+        image: ghcr.io/diwise/iot-device-mgmt:changeme
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -34,14 +37,17 @@ spec:
             path: /health
             port: default-port
         volumeMounts:
-          - name: conf-volume-devices-cfg
+          - name: conf-volume
             mountPath: /opt/diwise/config
             readOnly: true
-        env:
-          - name: RABBITMQ_HOST
-            value: rabbitmq
+          - name: conf-volume-data
+            mountPath: /opt/diwise/config/data
+            readOnly: true
       serviceAccountName: iot-device-mgmt
       volumes:
-        - name: conf-volume-devices-cfg
+        - name: conf-volume-data
           configMap:
             name: known-devices-cm
+        - name: conf-volume
+          configMap:
+            name: dev-mgmt-cfg-cm
