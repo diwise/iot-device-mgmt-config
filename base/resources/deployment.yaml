@@ -40,14 +40,8 @@ spec:
           - name: conf-volume
             mountPath: /opt/diwise/config
             readOnly: true
-          - name: conf-volume-data
-            mountPath: /opt/diwise/config/data
-            readOnly: true
       serviceAccountName: iot-device-mgmt
       volumes:
-        - name: conf-volume-data
-          configMap:
-            name: known-devices-cm
         - name: conf-volume
           configMap:
             name: dev-mgmt-cfg-cm
