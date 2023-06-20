@@ -12,6 +12,11 @@ spec:
     spec:
       containers:
       - env:
+          - name: GOMEMLIMIT
+            valueFrom:
+              resourceFieldRef:
+                containerName: iot-device-mgmt
+                resource: limits.memory
           - name: RABBITMQ_HOST
             value: rabbitmq
         image: ghcr.io/diwise/iot-device-mgmt:changeme
@@ -28,7 +33,7 @@ spec:
         resources:
           limits:
             cpu: 250m
-            memory: 250Mi
+            memory: 512Mi
           requests:
             cpu: 50m
             memory: 100Mi
