@@ -19,6 +19,8 @@ spec:
                 resource: limits.memory
           - name: RABBITMQ_HOST
             value: rabbitmq
+          - name: ALLOWED_SEED_TENANTS
+            value: "default"
         image: ghcr.io/diwise/iot-device-mgmt:changeme
         imagePullPolicy: IfNotPresent
         livenessProbe:
