@@ -23,10 +23,6 @@ spec:
             value: rabbitmq
         image: ghcr.io/diwise/iot-device-mgmt:changeme
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: default-port
         name: iot-device-mgmt
         ports:
           - containerPort: 8080
